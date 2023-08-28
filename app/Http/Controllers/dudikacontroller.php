@@ -19,19 +19,19 @@ class dudikaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
+            'pemimpin'=>'required',
             'nama'=>'required',
-            'alamat'=>'required',
-            'penerbit'=>'required',
-            'pengarang'=>'required',
-            'pemimpin'=>'required'
+            'jabatan'=>'required',
+            'umur'=>'required',
+            'alamat'=>'required'
            
         ]);
         DB::table('dudikas')->insert([
-            'nama'=>$request->nama,
-            'alamat'=>$request->alamat,
-            'penerbit'=>$request->penerbit,
-            'pengarang'=>$request->pengarang,
-            'pemimpin'=>$request->pemimpin
+            'pemimpin'=>$request->nama,
+            'nama'=>$request->alamat,
+            'jabatan'=>$request->jabatan,
+            'umur'=>$request->umur,
+            'alamat'=>$request->pemimpin
         ]);
         if(DB::table('dudikas')){
             return redirect()->route('dudika.index')->with(['success'=>'Data berhasil disimpan']);
@@ -47,11 +47,11 @@ class dudikaController extends Controller
     public function update(Request $request, $id)
     {
     $this->validate($request, [
-        'nama' => 'required',
-        'alamat' => 'required',
-        'penerbit'=>'required',
-        'pengarang'=>'required',
-        'pemimpin' => 'required'
+        'pemimpin'=>'required',
+            'nama'=>'required',
+            'jabatan'=>'required',
+            'umur'=>'required',
+            'alamat'=>'required'
         
         
         
@@ -61,11 +61,11 @@ class dudikaController extends Controller
     $dudika=dudika::findOrFail($id); 
     $dudika->update([
         
-        'nama'=>$request->nama,
-        'alamat'=>$request->alamat,
-        'penerbit'=>$request->penerbit,
-        'pengarang'=>$request->pengarang,
-        'pemimpin'=>$request->pemimpin
+        'pemimpin'=>$request->nama,
+        'nama'=>$request->alamat,
+        'jabatan'=>$request->jabatan,
+        'umur'=>$request->umur,
+        'alamat'=>$request->pemimpin
         
       
        
